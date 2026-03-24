@@ -11,3 +11,7 @@ spring.jpa.show-sql=true
 server.port=8080
 
 jwt.secret=clave-secreta-de-al-menos-32-caracteres
+
+cloudinary.cloud_name=tu_cloud_name
+cloudinary.api_key=tu_api_key
+cloudinary.api_secret=tu_api_secret
