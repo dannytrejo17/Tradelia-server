@@ -1,5 +1,7 @@
 package com.tradelia.Service;
 
+import com.tradelia.Dto.ConversationInboxDto;
+import com.tradelia.Dto.MessageDto;
 import com.tradelia.Dto.SendMessageRequest;
 import com.tradelia.Dto.SendMessageResponse;
 import com.tradelia.Model.Conversation;
@@ -19,6 +21,10 @@ import org.springframework.util.StringUtils;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class ChatService {
@@ -55,6 +61,56 @@ public class ChatService {
         publishMessage(conversation.getId(), message);
 
         return SendMessageResponse.from(conversation.getId(), message);
+    }
+
+    @Transactional(readOnly = true)
+    public List<ConversationInboxDto> getMyConversations(Principal principal) {
+        User user = loadUser(principal);
+        List<Conversation> conversations = conversationRepository.findByUserIdOrderByLastMessageAtDesc(user.getId());
+
+        if (conversations.isEmpty()) {
+            return List.of();
+        }
+
+        List<Long> conversationIds = conversations.stream().map(Conversation::getId).toList();
+        List<Message> lastMessages = messageRepository.findLatestByConversationIds(conversationIds);
+
+        Map<Long, Message> lastByConversationId = new HashMap<>();
+        for (Message message : lastMessages) {
+            lastByConversationId.put(message.getConversation().getId(), message);
+        }
+
+        List<ConversationInboxDto> inbox = new ArrayList<>();
+        for (Conversation conversation : conversations) {
+            inbox.add(ConversationInboxDto.from(
+                    conversation,
+                    lastByConversationId.get(conversation.getId())
+            ));
+        }
+        return inbox;
+    }
+
+    @Transactional(readOnly = true)
+    public ConversationInboxDto getConversation(Long conversationId, Principal principal) {
+        User user = loadUser(principal);
+        Conversation conversation = conversationRepository.findById(conversationId)
+                .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, "La conversación no existe"));
+        assertParticipant(user, conversation);
+        return ConversationInboxDto.from(conversation, null);
+    }
+
+    @Transactional(readOnly = true)
+    public List<MessageDto> getConversationHistory(Long conversationId, Principal principal) {
+        User user = loadUser(principal);
+        Conversation conversation = conversationRepository.findById(conversationId)
+                .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, "La conversación no existe"));
+        assertParticipant(user, conversation);
+
+        List<MessageDto> history = new ArrayList<>();
+        for (Message message : messageRepository.findByConversationOrderByCreatedAtAsc(conversation)) {
+            history.add(MessageDto.from(message));
+        }
+        return history;
     }
 
     private User loadUser(Principal principal) {
