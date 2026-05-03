@@ -2,6 +2,8 @@
 
 Backend REST de **Tradelia**, un marketplace de segunda mano donde los usuarios pueden publicar productos y chatear en tiempo real.
 
+> **Despliegue:** la versión en producción está en la rama [`demo`](../../tree/demo).
+
 ![Java](https://img.shields.io/badge/Java-21-orange?style=flat-square)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4-6DB33F?style=flat-square&logo=springboot&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-8-4479A1?style=flat-square&logo=mysql&logoColor=white)
