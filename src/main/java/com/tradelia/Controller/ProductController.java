@@ -2,6 +2,7 @@ package com.tradelia.Controller;
 
 import com.tradelia.Dto.FilterRequest;
 import com.tradelia.Dto.ProductDto;
+import com.tradelia.Service.DemoModeService;
 import com.tradelia.Service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,9 +20,11 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
+    private final DemoModeService demoModeService;
 
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, DemoModeService demoModeService) {
         this.productService = productService;
+        this.demoModeService = demoModeService;
     }
 
     @GetMapping
@@ -56,7 +59,7 @@ public class ProductController {
             @RequestParam("province") String province,
             @RequestParam("image") MultipartFile image,
             Principal principal) throws IOException {
-
+        demoModeService.ensureWriteAllowed();
         String status = productService.create(
                 principal, name, description, price, stock,
                 category, condition, city, province, image);
@@ -67,12 +70,14 @@ public class ProductController {
     public ResponseEntity<String> updateProduct(@PathVariable Long id,
                                                 @RequestBody ProductDto req,
                                                 Principal principal) {
+        demoModeService.ensureWriteAllowed();
         String status = productService.update(principal, id, req);
         return ResponseEntity.ok(status);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable Long id, Principal principal) {
+        demoModeService.ensureWriteAllowed();
         String status = productService.delete(principal, id);
         return ResponseEntity.ok(status);
     }

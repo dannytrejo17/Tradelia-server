@@ -1,0 +1,14 @@
+[
+  {
+    "username": "Ana Vendedora",
+    "email": "demo@tradelia.com",
+    "password": "Demo1234!",
+    "role": "USER"
+  },
+  {
+    "username": "Carlos Comprador",
+    "email": "buyer@tradelia.com",
+    "password": "Demo1234!",
+    "role": "USER"
+  }
+]

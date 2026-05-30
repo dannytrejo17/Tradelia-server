@@ -1,6 +1,7 @@
 package com.tradelia.Controller;
 
 import com.tradelia.Model.User;
+import com.tradelia.Service.DemoModeService;
 import com.tradelia.Service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,13 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final UserService userService;
+    private final DemoModeService demoModeService;
 
-    public AuthController(UserService userService) {
+    public AuthController(UserService userService, DemoModeService demoModeService) {
         this.userService = userService;
+        this.demoModeService = demoModeService;
     }
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody User user) {
+        demoModeService.ensureWriteAllowed();
         String status = userService.register(user.getUsername(), user.getEmail(), user.getPassword());
         return new ResponseEntity<>(status, HttpStatus.CREATED);
     }

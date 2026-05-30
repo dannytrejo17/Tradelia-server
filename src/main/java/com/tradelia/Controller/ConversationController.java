@@ -5,6 +5,7 @@ import com.tradelia.Dto.MessageDto;
 import com.tradelia.Dto.SendMessageRequest;
 import com.tradelia.Dto.SendMessageResponse;
 import com.tradelia.Service.ChatService;
+import com.tradelia.Service.DemoModeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,15 +17,18 @@ import java.util.List;
 public class ConversationController {
 
     private final ChatService chatService;
+    private final DemoModeService demoModeService;
 
-    public ConversationController(ChatService chatService) {
+    public ConversationController(ChatService chatService, DemoModeService demoModeService) {
         this.chatService = chatService;
+        this.demoModeService = demoModeService;
     }
 
     @PostMapping("/messages")
     public ResponseEntity<SendMessageResponse> sendMessage(
             @RequestBody SendMessageRequest request,
             Principal principal) {
+        demoModeService.ensureWriteAllowed();
         return ResponseEntity.ok(chatService.sendMessage(request, principal));
     }
 

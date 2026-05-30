@@ -1,0 +1,98 @@
+[
+  {
+    "name": "iPhone 14 Pro",
+    "description": "128 GB, color grafito. Bateria al 89%. Incluye funda y cargador original.",
+    "price": 749.99,
+    "imageUrl": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop",
+    "stock": 1,
+    "category": "Electronica",
+    "productCondition": "Usado - Buen estado",
+    "city": "Madrid",
+    "province": "Madrid",
+    "sellerEmail": "demo@tradelia.com"
+  },
+  {
+    "name": "Bicicleta de montana",
+    "description": "Cuadro de aluminio, 21 velocidades. Ideal para rutas urbanas y senderos ligeros.",
+    "price": 320.00,
+    "imageUrl": "https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=600&h=600&fit=crop",
+    "stock": 1,
+    "category": "Deportes",
+    "productCondition": "Usado - Muy buen estado",
+    "city": "Barcelona",
+    "province": "Barcelona",
+    "sellerEmail": "demo@tradelia.com"
+  },
+  {
+    "name": "Silla ergonomica de oficina",
+    "description": "Reposabrazos ajustables y soporte lumbar. Perfecta para teletrabajo.",
+    "price": 145.50,
+    "imageUrl": "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=600&h=600&fit=crop",
+    "stock": 2,
+    "category": "Hogar",
+    "productCondition": "Nuevo",
+    "city": "Valencia",
+    "province": "Valencia",
+    "sellerEmail": "demo@tradelia.com"
+  },
+  {
+    "name": "Camara mirrorless Sony",
+    "description": "Incluye objetivo 18-55mm y bolsa de transporte. Pocas horas de uso.",
+    "price": 580.00,
+    "imageUrl": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&h=600&fit=crop",
+    "stock": 1,
+    "category": "Electronica",
+    "productCondition": "Usado - Como nuevo",
+    "city": "Sevilla",
+    "province": "Sevilla",
+    "sellerEmail": "demo@tradelia.com"
+  },
+  {
+    "name": "Patinete electrico Xiaomi Pro 2",
+    "description": "Autonomia de hasta 45 km. Neumaticos revisados. Ideal para desplazamientos urbanos.",
+    "price": 299.00,
+    "imageUrl": "https://images.unsplash.com/photo-1566936737687-8f392a237b8b?w=600&h=600&fit=crop",
+    "stock": 1,
+    "category": "Deportes",
+    "productCondition": "Usado - Muy buen estado",
+    "city": "Zaragoza",
+    "province": "Zaragoza",
+    "sellerEmail": "demo@tradelia.com"
+  },
+  {
+    "name": "Zapatillas running Nike",
+    "description": "Talla 42 EU. Usadas en menos de 10 salidas, suela en excelente estado.",
+    "price": 65.00,
+    "imageUrl": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop",
+    "stock": 1,
+    "category": "Deportes",
+    "productCondition": "Usado - Buen estado",
+    "city": "Bilbao",
+    "province": "Vizcaya",
+    "sellerEmail": "demo@tradelia.com"
+  },
+  {
+    "name": "Mesa de comedor extensible",
+    "description": "Madera de roble, capacidad para 4-6 personas. Recogida en persona.",
+    "price": 210.00,
+    "imageUrl": "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600&h=600&fit=crop",
+    "stock": 1,
+    "category": "Hogar",
+    "productCondition": "Usado - Buen estado",
+    "city": "Malaga",
+    "province": "Malaga",
+    "sellerEmail": "demo@tradelia.com"
+  },
+  {
+    "name": "Guitarra acustica Yamaha",
+    "description": "Ideal para principiantes. Incluye funda acolchada y puas.",
+    "price": 175.00,
+    "imageUrl": "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=600&h=600&fit=crop",
+    "stock": 1,
+    "category": "Musica",
+    "productCondition": "Usado - Muy buen estado",
+    "city": "Granada",
+    "province": "Granada",
+    "sellerEmail": "demo@tradelia.com"
+  }
+]
