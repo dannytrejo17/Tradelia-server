@@ -1,5 +1,6 @@
 package com.tradelia.Service;
 
+import com.tradelia.Dto.UserProfileDto;
 import com.tradelia.Model.User;
 import com.tradelia.Repository.UserRepository;
 import com.tradelia.exception.ApiException;
@@ -49,6 +50,12 @@ public class UserService {
         userRepository.save(user);
 
         return "usuario creado";
+    }
+
+    public UserProfileDto getUserProfile(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, "usuario no encontrado"));
+        return UserProfileDto.from(user);
     }
 
     public String login(String email, String password) {
